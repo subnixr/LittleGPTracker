@@ -18,9 +18,26 @@
 	at the end, then 
 		source ~/.bashrc
 
+	make PLATFORM=PSP
+
 ##### DINGOO: Compile under Linux
 
 ##### RASPI: Compile under Linux
 	Required libs:
 	    sudo apt install -y git gcc libsdl1.2-dev make g++ libjack-dev
+	make PLATFORM=RASPI
 
+##### BITTBOY: Compile under Linux
+	Required libs:
+		sudo apt install -y libncurses-dev
+	Dev kit:
+		https://github.com/bittboy/buildroot
+	Build dev kit:
+		cd buildroot && make sdk
+	using nano ~/.bashrc, add
+		export BITTBOYDEV=~/buildroot/output/host
+		export PATH=$PATH:$BITTBOYDEV
+	at the end, then 
+		source ~/.bashrc
+
+	make PLATFORM=BITTBOY
