@@ -128,12 +128,24 @@ void SelectProjectDialog::OnFocus() {
 };
 
 void SelectProjectDialog::ProcessButtonMask(unsigned short mask,bool pressed) {
-	if (!pressed) return ;
-	
-	if (mask&EPBM_B) {         
+	// if (!pressed) return ;
+
+	if (mask&EPBM_B) {
+		if (!pressed){ DrawView(); return;}
+		GUITextProperties props ;
+		int offset=LIST_WIDTH/4 ;
+		SetColor(CD_NORMAL) ;
+		int x,y = 0;
+		y=LIST_SIZE+6 ;
+		SetWindow(LIST_WIDTH+1,LIST_SIZE) ;
+		SetColor(CD_NORMAL) ;
+
+		Trace::Log("SelectProjectDialog", "pressing 'b'");         
+		DrawString(x,y,"banan", props);
 		if (mask&EPBM_UP) warpToNextProject(-LIST_SIZE) ;
 		if (mask&EPBM_DOWN) warpToNextProject(LIST_SIZE) ;
 	} else {
+	  if (!pressed) return ;
 
 	  // A modifier
 	  if (mask&EPBM_A) { 
