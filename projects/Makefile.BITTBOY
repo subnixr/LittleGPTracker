@@ -1,17 +1,16 @@
-
-DEVKIT=$(BITTBOYDEV)
+DEVKIT=/opt/bittboy-toolchain
 
 TARGET = lgpt.elf
 
 TOOLPATH=$(DEVKIT)/usr/bin
 PREFIX		:=	arm-linux-
-SDL_BASE = $(BITTBOYDEV)/usr/arm-miyoo-linux-musleabi/sysroot/usr/bin/
+SDL_BASE = $(BITTBOYDEV)/arm-buildroot-linux-musleabi/sysroot/usr/bin/
 
 include $(PWD)/bittboy_rules
 
 CFLAGS	:=	`$(SDL_BASE)sdl-config --cflags` -O3 -D_NDEBUG -D_NO_JACK_ -Wall -DPLATFORM_DINGOO -I$(PWD)/../sources -D__LINUX_ALSA__  -DCPP_MEMORY -DRS97
 
-CXXFLAGS:=	$(CFLAGS) -fpermissive -std=gnu++03
+CXXFLAGS:=	$(CFLAGS) -std=gnu++03
 
 EXTENSION:= elf
 

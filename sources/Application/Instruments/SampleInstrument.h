@@ -102,8 +102,11 @@ private:
        bool running_ ;
        bool dirty_ ;
 	   TableSaveState tableState_ ;
-	   
-	   static int8_t lastMidiNote_[SONG_CHANNEL_COUNT] ;
+	   #ifdef PLATFORM_DINGOO
+	   	static wint_t lastMidiNote_[SONG_CHANNEL_COUNT] ;
+	   #else
+	   	static int8_t lastMidiNote_[SONG_CHANNEL_COUNT] ;
+	   #endif
 	   static fixed lastSample_[SONG_CHANNEL_COUNT][2] ;
 	   static fixed feedback_[SONG_CHANNEL_COUNT][FB_BUFFER_LENGTH*2] ;
 
