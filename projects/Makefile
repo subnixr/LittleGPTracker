@@ -225,38 +225,38 @@ DINGOOFILES             :=  GPSDLMain.o \
 					SDLEventManager.o \
 					SDLGUIWindowImp.o
 
-RS97FILES             :=  GPSDLMain.o \
+RS97FILES  		:=  GPSDLMain.o \
 					UnixFileSystem.o \
 					DINGOOAudio.o \
 					Process.o \
 					UnixProcess.o \
 					SDLAudioDriver.o \
 					DINGOOAudioDriver.o \
-					DINGOOSystem.o \
+					BITTBOYSystem.o \
 					DINGOOEventQueue.o \
 					SDLProcess.o \
 					SDLTimer.o \
 					GUIFactory.o \
 					SDLEventManager.o \
-					DINGOOSerialMidiDevice.o \
-					DINGOOMidiService.o \
+					BITTBOYSerialMidiDevice.o \
+					BITTBOYMidiService.o \
 					SDLGUIWindowImp.o 
 					
-BITTBOYFILES             :=  GPSDLMain.o \
+BITTBOYFILES    :=  GPSDLMain.o \
 					UnixFileSystem.o \
 					DINGOOAudio.o \
 					Process.o \
 					UnixProcess.o \
 					SDLAudioDriver.o \
 					DINGOOAudioDriver.o \
-					DINGOOSystem.o \
+					BITTBOYSystem.o \
 					DINGOOEventQueue.o \
 					SDLProcess.o \
 					SDLTimer.o \
 					GUIFactory.o \
 					SDLEventManager.o \
-					DINGOOSerialMidiDevice.o \
-					DINGOOMidiService.o \
+					BITTBOYSerialMidiDevice.o \
+					BITTBOYMidiService.o \
 					SDLGUIWindowImp.o 
 
 PSPFILES		:=	PSPmain.o  \
