@@ -1,10 +1,10 @@
-DEVKIT=/opt/bittboy-toolchain
+DEVKIT=/opt/arm-buildroot-linux-musleabi_sdk-buildroot
 
 TARGET = lgpt.elf
 
 TOOLPATH=$(DEVKIT)/usr/bin
 PREFIX		:=	arm-linux-
-SDL_BASE = $(BITTBOYDEV)/arm-buildroot-linux-musleabi/sysroot/usr/bin/
+SDL_BASE = $(DEVKIT)/arm-buildroot-linux-musleabi/sysroot/usr/bin/
 
 include $(PWD)/bittboy_rules
 
