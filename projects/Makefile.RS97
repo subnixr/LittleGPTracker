@@ -1,11 +1,11 @@
 
-DEVKIT=/opt/rs97-toolchain
+DEVKIT=/opt/mipsel-rg350-linux-uclibc_sdk-buildroot
 
 TARGET = lgpt.dge
 
 TOOLPATH=$(DEVKIT)/usr/bin
 PREFIX		:=	mipsel-linux-
-SDL_BASE = /opt/rs97-toolchain/usr/mipsel-buildroot-linux-musl/sysroot/usr/bin/
+SDL_BASE = /opt/mipsel-rg350-linux-uclibc_sdk-buildroot/usr/mipsel-rg350-linux-uclibc/sysroot/usr/bin/
 
 include $(PWD)/rs97_rules
 

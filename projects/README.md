@@ -8,7 +8,7 @@
 
 ##### PSP: Compile under Ubuntu
 	Required libs:
-		sudo apt install -y build-essential cmake pkgconf \n
+		sudo apt install -y build-essential cmake pkgconf \
 		libusb-0.1 libgpgme11 libarchive-tools fakeroot
 	Dev kit:
 		https://github.com/djdiskmachine/pspdev
@@ -32,7 +32,17 @@
 	Required libs:
 		sudo apt install -y libncurses-dev
 	Dev kit:
-		https://github.com/MiyooCFW/toolchain/releases
+		https://github.com/djdiskmachine/MiyooMini-toolchain/releases/download/toolchain/miyoo-toolchain-v2.0.0-arm-buildroot-linux-musleabi_sdk-buildroot.tar.gz
 	    install in /opt/
 	Build with:
 		make PLATFORM=BITTBOY
+
+##### RS97/RG350: Compile under Linux
+	Required libs:
+		sudo apt install -y libncurses-dev
+	Dev kit:
+		https://github.com/djdiskmachine/buildroot-rg350-old-kernel/releases/download/toolchain/mipsel-rg350-linux-uclibc_sdk-buildroot.tar.gz
+	    install in /opt/ and run relocate-sdk.sh from there
+	Build with:
+		make PLATFORM=RS97
+
