@@ -1,6 +1,5 @@
 
 #include "DINGOOSerialMidiDevice.h"
-//#include "System/io/Trace.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -14,7 +13,6 @@ const char *port="/dev/usb/tts/0" ;
 const char *port="/dev/ttyS1" ;
 #endif
 
-//#define BAUDRATE B38400
 #define BAUDRATE B57600
 
 #ifdef RS97
@@ -32,7 +30,6 @@ bool DINGOOSerialMidiDevice::Init(){
      printf("about to open port\n") ;
      fd_ = open(port, O_RDWR /*| O_NOCTTY | O_NDELAY*/ ); 
      if (fd_ <=0) {printf("Failed to open %s",port); fd_=0 ;return false ; }
-     //Trace::Dump("opened serial successfully %x",fd_) ;
      printf("opened serial successfully");
      tcgetattr(fd_,&oldtio_); /* save current port settings */
     
