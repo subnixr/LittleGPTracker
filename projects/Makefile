@@ -79,21 +79,21 @@ RASPIDIRS :=                      ../sources/Adapters/Unix/FileSystem \
                                 ../sources/Adapters/SDL/Timer\
                                 ../sources/Adapters/SDL/GUI
 
-ARCHDIRS :=                      ../sources/Adapters/Unix/FileSystem \
-                                ../sources/Adapters/DEB/Main\
-                                ../sources/Adapters/Unix/Process\
-                                ../sources/System/Process\
-                                ../sources/Externals/RTAudio\
-                                ../sources/Externals/RtMidi\
-                                ../sources/Adapters/DEB/System\
-                                ../sources/Adapters/Jack/Audio\
-                                ../sources/Adapters/Jack/Midi\
-                                ../sources/Adapters/Jack/Client\
-                                ../sources/Adapters/Jack/Midi\
-                                ../sources/Adapters/RTAudio\
-                                ../sources/Adapters/RTMidi\
-                                ../sources/Adapters/SDL/Timer\
-                                ../sources/Adapters/SDL/GUI
+STEAMDIRS 	:=	../sources/Adapters/Unix/FileSystem \
+				../sources/Adapters/DEB/Main\
+				../sources/Adapters/Unix/Process\
+				../sources/System/Process\
+				../sources/Externals/RTAudio\
+				../sources/Externals/RtMidi\
+				../sources/Adapters/DEB/System\
+				../sources/Adapters/Jack/Audio\
+				../sources/Adapters/Jack/Midi\
+				../sources/Adapters/Jack/Client\
+				../sources/Adapters/Jack/Midi\
+				../sources/Adapters/RTAudio\
+				../sources/Adapters/RTMidi\
+				../sources/Adapters/SDL/Timer\
+				../sources/Adapters/SDL/GUI
 
 GP2XDIRS	:=    . \
 				../sources/Adapters/GP2X/Main \
@@ -282,25 +282,25 @@ RASPIFILES                :=      UnixFileSystem.o \
                                         JackClient.o \
                                         JackAudio.o 
 
-ARCHFILES                :=      UnixFileSystem.o \
-                                        DEBmain.o \
-                                        DEBSystem.o \
-                                        GUIFactory.o \
-                                        SDLGUIWindowImp.o \
-                                        SDLEventManager.o \
-                                        Process.o \
-                                        UnixProcess.o \
-                                        RTAudioDriver.o \
-                                        RTAudioStub.o \
-                                        RtAudio.o\
-                                        RtMidi.o\
-                                        RTMidiService.o\
-                                        RTMidiOutDevice.o\
-                                        RTMidiInDevice.o\
-                                        SDLTimer.o \
-                                        JackAudioDriver.o \
-                                        JackClient.o \
-                                        JackAudio.o
+STEAMFILES		:=  UnixFileSystem.o \
+					DEBmain.o \
+					DEBSystem.o \
+					GUIFactory.o \
+					SDLGUIWindowImp.o \
+					SDLEventManager.o \
+					Process.o \
+					UnixProcess.o \
+					RTAudioDriver.o \
+					RTAudioStub.o \
+					RtAudio.o\
+					RtMidi.o\
+					RTMidiService.o\
+					RTMidiOutDevice.o\
+					RTMidiInDevice.o\
+					SDLTimer.o \
+					JackAudioDriver.o \
+					JackClient.o \
+					JackAudio.o
 
 NDSFILES		:=	NDSmain.o \
 					NDSFileSystem.o \
@@ -510,7 +510,7 @@ endif
 
 deploy:
 	make PLATFORM=PSP
-	~/docker_arch.sh 
+	~/docker_steam.sh 
 	~/docker_deb686.sh 
 	~/lgpt_package.sh 
         
