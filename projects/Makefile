@@ -567,10 +567,12 @@ $(OUTPUT).beagle-exe	:	$(OFILES)
 endif
 #---------------------------------------------------------------------------------------
 
-
+# Make as many as possible
+# Build W32 first
 deploy:
 	make PLATFORM=PSP
 	~/docker_steam.sh 
 	~/docker_deb686.sh 
 	~/lgpt_package.sh 
-        
+#	~/build_and_copy_from_pi.sh
+	~/lgpt_package.sh	        
