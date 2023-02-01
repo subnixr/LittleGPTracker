@@ -3,7 +3,7 @@ DEVKITARM=/home/nostromo/caanoodev/gcc-4.2.4-glibc-2.7-eabi/
 
 PREFIX		:=	arm-gph-linux-gnueabi-
 
-include $(PWD)/caanoo_rules
+include $(PWD)/rules_caanoo
 
 CFLAGS	:= -O3 -DNDEBUG -Wall -DCPP_MEMORY -DPLATFORM_$(PLATFORM) -I$(PWD)/../sources -D__LINUX_OSS__ 
 #CFLAGS	:= -g -D_DEBUG -Wall -DCPP_MEMORY -DPLATFORM_$(PLATFORM) -I$(PWD)/../sources -D__LINUX_OSS__ 

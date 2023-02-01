@@ -1,8 +1,6 @@
--include $(PWD)/base_rules
-
-STRIP = arm-gph-linux-gnueabi-strip
-
+-include $(PWD)/rules_base
+STRIP = arm-linux-strip
 #---------------------------------------------------------------------------------
 %.gpe: $(OFILES)
-	$(CXX) $(LDFLAGS) -o $@ $(OFILES) $(LIBS)
+	$(CXX) -static $(LDFLAGS) -o $@ $(OFILES) $(LIBS)
 	@$(STRIP) $@

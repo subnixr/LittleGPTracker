@@ -5,7 +5,7 @@ TOOLPATH=$(DEVKIT)/usr/bin
 PREFIX		:=	mipsel-linux-
 SDL_BASE = /opt/mipsel-linux-uclibc/usr/bin/
 
-include $(PWD)/dingoo_rules
+include $(PWD)/rules_dingoo
 
 CFLAGS	:=	`$(SDL_BASE)sdl-config --cflags` -O3 -D_DEBUG -Wall -DPLATFORM_$(PLATFORM) -I$(PWD)/../sources -D__LINUX_ALSA__  -DCPP_MEMORY
 
