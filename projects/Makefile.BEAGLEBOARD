@@ -3,7 +3,7 @@ DEVKIT=/usr/local/angstrom/arm
 TOOLPATH=$(DEVKIT)/bin
 PREFIX		:=	arm-angstrom-linux-gnueabi-
 
-include $(PWD)/beagleboard_rules
+include $(PWD)/rules_beagleboard
 
 SDLBASE:= /home/nostromo/devtree/syntharchitecture/Libs/Beagleboard/SDL/
 CFLAGS	:= -I$(SDLBASE)/include	 -DDEBUG -O3 -Wall -DPLATFORM_$(PLATFORM) -I$(PWD)/../sources -D__LINUX_ALSA__  -DCPP_MEMORY -D_NO_JACK_

@@ -1,8 +1,5 @@
--include $(PWD)/base_rules
-
-#STRIP = mipsel-linux-strip
+-include $(PWD)/rules_base
 STRIP = ls
-
 #---------------------------------------------------------------------------------
 %.dge: $(OFILES)
 	$(CXX) $(LDFLAGS) -o $@ $(OFILES) $(LIBS)
