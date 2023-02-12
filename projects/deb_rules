@@ -1,7 +1,9 @@
 -include $(PWD)/base_rules
-LDFLAGS := -m32
+LDFLAGS := -m32 
+STRIP = ls
+
 
 #---------------------------------------------------------------------------------
 %.deb-exe: $(OFILES)
-	$(CXX) $(LDFLAGS) $@ $(OFILES) $(LIBS)
+	$(CXX) -static $(LDFLAGS) $@ $(OFILES) $(LIBS) @$(STRIP) $@
 
