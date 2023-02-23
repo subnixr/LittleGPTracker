@@ -11,8 +11,8 @@ public:
 	SyncMaster() ;
 	void Start() ;
 	void Stop() ;
-	void SetTempo(int tempo) ;
-	int GetTempo() ;
+	void SetTempo(float tempo) ;
+	float GetTempo() ;
 	void NextSlice() ;
 	bool MajorSlice() ;
 	bool TableSlice() ;
@@ -24,7 +24,7 @@ public:
 	unsigned int GetBeatCount() ;
 	float GetTickTime() ;
 private:
-	int tempo_ ;
+	float tempo_ ;
 	int currentSlice_ ;
 	int tableRatio_ ;
 	unsigned int beatCount_ ;

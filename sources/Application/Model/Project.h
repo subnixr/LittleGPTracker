@@ -10,14 +10,15 @@
 
 
 #define VAR_TEMPO       MAKE_FOURCC('T','M','P','O')
+#define VAR_TEMPO_DECI	MAKE_FOURCC('T','M','P','D')
 #define VAR_MASTERVOL   MAKE_FOURCC('M','S','T','R')
 #define VAR_WRAP        MAKE_FOURCC('W','R','A','P')
 #define VAR_MIDIDEVICE  MAKE_FOURCC('M','I','D','I')
-#define VAR_TRANSPOSE   MAKE_FOURCC('T','R','S','P')
+#define VAR_TRANSPOSE	MAKE_FOURCC('T','R','S','P')
 
 #define PROJECT_NUMBER "1.3"
 #define PROJECT_RELEASE "o"
-#define BUILD_COUNT "alpha-5"
+#define BUILD_COUNT "decimal_tempo"
 
 #define MAX_TAP 3
 
@@ -34,7 +35,7 @@ public:
 	bool Wrap() ;
 	void OnTempoTap();
 	void NudgeTempo(int value) ;
-	int GetTempo() ; // Takes nudging into account
+	float GetTempo() ; // Takes nudging into account
 	int GetTranspose() ;
 
 	void Trigger() ;

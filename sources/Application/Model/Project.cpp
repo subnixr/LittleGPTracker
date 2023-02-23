@@ -59,10 +59,12 @@ Project::~Project() {
 	delete instrumentBank_ ;
 } ;
 
-int Project::GetTempo() {
+float Project::GetTempo() {
 	Variable *v=FindVariable(VAR_TEMPO) ;
+	Variable *v2=FindVariable(VAR_TEMPO_DECI) ;
 	NAssert(v) ;
-	int tempo = v->GetInt()+tempoNudge_ ;
+	NAssert(v2) ;
+	float tempo = v->GetFloat()+tempoNudge_+(v2->GetFloat())/10;
 	return tempo ;
 } ;
 
