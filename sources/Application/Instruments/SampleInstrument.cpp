@@ -598,11 +598,23 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
     short* loopPosition=(short *)(wavbuf+rp->rendLoopStart_*2*channelCount) ;
     short* lastSample=(short *)(wavbuf+(rp->rendLoopEnd_-1)*2*channelCount) ;
 
+	// Trace::Log("PINGPONG","firstSample:            %d", firstSample);
+	// Trace::Log("PINGPONG","lastSample:             %d", lastSample);
+	// Trace::Log("PINGPONG","loopPosition:           %d", loopPosition);
+
+
     if (/*(loopMode==SILM_OSCFINE)||*/(rp->reverse_))
     {
 			lastSample=(short *)(wavbuf+rp->rendLoopEnd_*2*channelCount) ;
-		}
-        
+			// firstSample=(short *)(wavbuf+(rp->rendLoopEnd_-1)*2*channelCount) ;
+			// Trace::Log("REVERSE","firstSample:            %d", firstSample);
+			// Trace::Log("REVERSE","lastSample:             %d", lastSample);
+
+	} else {
+			// Trace::Log("NON REVERSE","firstSample:            %d", firstSample);
+			// Trace::Log("NON REVERSE","lastSample:             %d", lastSample);
+	}
+	// assert(false);
     fixed zerofive=fl2fp(0.5f) ;
 
 		// Get feedback pointer position & boundary
@@ -645,6 +657,18 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
 		while (count>0) {
 
 			// look where we are, if we need to
+			// Trace::Log("PINGPONG","---->StartLOOP");								
+			// Trace::Log("PINGPONG","input:                   %d", input);								
+			// Trace::Log("PINGPONG","LoopPos:                 %d", loopPosition);
+			// Trace::Log("PINGPONG","count:                   %d", count);
+			// Trace::Log("PINGPONG","size:                    %d", size);
+			// Trace::Log("PINGPONG","wavbuf:                    %d", wavbuf);
+			// Trace::Log("PINGPONG","lastsample:              %d", lastSample);
+			// Trace::Log("PINGPONG","firstSample:             %d", firstSample);
+			// Trace::Log("PINGPONG","rendLoopEnd:             %d", rp->rendLoopEnd_);
+			// Trace::Log("PINGPONG","rendLoopStart:           %d", rp->rendLoopStart_);
+			// Trace::Log("PINGPONG","--->EndLOOP");			
+			// assert(false);					
 
 			if (!rpReverse) { //Looping forward 
 				if (input>=lastSample/*-((loopMode==SILM_OSCFINE)?1:0)*/) {
@@ -665,12 +689,43 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
 							}
 							break ;
 						case SILM_LOOP_PINGPONG:
-							if (rp->position_ >= rp->rendLoopEnd_) {
+							// if (rp->position_ >= rp->rendLoopEnd_) {
 							// if (loopPosition >= lastSample) {
+							// if (input >= lastSample || input <= loopPosition) {
+							if (rp->position_ >= rp->rendLoopEnd_ || input <= loopPosition) {
+								
+								// Trace::Log("PINGPONG","====");
+								// Trace::Log("PINGPONG","Reached END");
+								// Trace::Log("PINGPONG","LoopPos:          %d", loopPosition);
+								// Trace::Log("PINGPONG","input:            %d", input);
+								// // Trace::Log("PINGPONG","firstSample:      %d", firstSample);
+								// Trace::Log("PINGPONG","LastSample:       %d", lastSample);
+								// Trace::Log("PINGPONG","rp->position_:    %d", rp->position_);
+								// Trace::Log("PINGPONG","rendLoopEnd:      %d", rp->rendLoopEnd_);
+								// Trace::Log("PINGPONG","rendLoopStart:    %d", rp->rendLoopStart_);
+								// Trace::Log("PINGPONG","Reverse:          %s", rpReverse?"true":"false");
+								// Trace::Log("PINGPONG","fpSpeed:          %d", fpSpeed);
+
+								// input=loopPosition ; // No looping at all 
 								rpReverse = !rpReverse;
 								fpSpeed = -fpSpeed;
 								rp->couldClick_=SHOULD_KILL_CLICKS ;
+								// Trace::Log("PINGPONG","====");
+								// Trace::Log("PINGPONG","Assigning");
+								// Trace::Log("PINGPONG","LoopPos:          %d", loopPosition);
+								// Trace::Log("PINGPONG","input:            %d", input);
+								// // Trace::Log("PINGPONG","firstSample:      %d", firstSample);
+								// Trace::Log("PINGPONG","LastSample:       %d", lastSample);
+								// Trace::Log("PINGPONG","rp->position_:    %d", rp->position_);
+								// Trace::Log("PINGPONG","rendLoopEnd:      %d", rp->rendLoopEnd_);
+								// Trace::Log("PINGPONG","rendLoopStart:    %d", rp->rendLoopStart_);
+								// Trace::Log("PINGPONG","Assigned reverse: %s", rpReverse?"true":"false");
+								// Trace::Log("PINGPONG","Assigned fpSpeed: %d", fpSpeed);
+			// assert(false);					
+
+
 							}
+							
 							break;
 /*						case SILM_OSCFINE:
 						{
@@ -709,7 +764,23 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
 							}
 							break ;
 						case SILM_LOOP_PINGPONG:
-							if (rp->position_ <= rp->rendLoopStart_) {
+							// if (rp->position_ <= rp->rendLoopStart_) {
+							// if (rp->position_ >= rp->rendLoopEnd_) {
+							// if (loopPosition >= lastSample) {
+							// if (input >= lastSample) {
+							// if (input >= firstSample) { // 
+							if (rp->position_ <= rp->rendLoopStart_ || input <= loopPosition) {
+								// Trace::Log("PINGPONG","====");
+								// Trace::Log("PINGPONG","Reached START");
+								// Trace::Log("PINGPONG","LoopPos:          %d", loopPosition);
+								// Trace::Log("PINGPONG","input:            %d", input);
+								// // Trace::Log("PINGPONG","firstSample:      %d", firstSample);
+								// Trace::Log("PINGPONG","LastSample:       %d", lastSample);
+								// Trace::Log("PINGPONG","rp->position_:    %d", rp->position_);
+								// Trace::Log("PINGPONG","rendLoopEnd:      %d", rp->rendLoopEnd_);
+								// Trace::Log("PINGPONG","rendLoopStart:    %d", rp->rendLoopStart_);
+								// Trace::Log("PINGPONG","Reverse:          %s", rpReverse?"true":"false");
+								// Trace::Log("PINGPONG","fpSpeed:          %d", fpSpeed);
 								rpReverse = !rpReverse;
 								fpSpeed = -fpSpeed;
 								// if (rp->rendLoopEnd_<rp->position_) { // Doesn't work
@@ -717,10 +788,23 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
 								// } else {
 								// 	input=lastSample+100; // ???
 								// }
-								input=loopPosition ; // OK forward loop, regular backwards loop, 
+								input=loopPosition ; // OK forward loop, regular backwards loop, without it jumps between start and end infinitely 
 								// input=(short*)fpPos ; // Nope illegal
 								// input=lastSample ; // First loop OK, the rest broken
 								rp->couldClick_=SHOULD_KILL_CLICKS;
+
+								// Trace::Log("PINGPONG","====");
+								// Trace::Log("PINGPONG","Assigning");
+								// Trace::Log("PINGPONG","LoopPos:          %d", loopPosition);
+								// Trace::Log("PINGPONG","input:            %d", input);
+								// // Trace::Log("PINGPONG","firstSample:      %d", firstSample);
+								// Trace::Log("PINGPONG","LastSample:       %d", lastSample);
+								// Trace::Log("PINGPONG","rp->position_:    %d", rp->position_);
+								// Trace::Log("PINGPONG","rendLoopEnd:      %d", rp->rendLoopEnd_);
+								// Trace::Log("PINGPONG","rendLoopStart:    %d", rp->rendLoopStart_);
+								// Trace::Log("PINGPONG","Assigned reverse: %s", rpReverse?"true":"false");
+								// Trace::Log("PINGPONG","Assigned fpSpeed: %d", fpSpeed);
+			// assert(false);											
 							}
 							break;
 /*						case SILM_OSCFINE:
