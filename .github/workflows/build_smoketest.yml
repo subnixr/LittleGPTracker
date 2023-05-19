@@ -1,0 +1,22 @@
+name: Build smoketest
+
+on:
+  push:
+    branches: [ "master", "o-release-candidate" ]
+  pull_request:
+    branches: [ "master", "o-release-candidate" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: node:i386
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run:  sudo apt install -y libsdl1.2-dev make g++ libjack-dev
+
+    - name: Run build
+      run: cd projects && make PLATFORM=DEB 
