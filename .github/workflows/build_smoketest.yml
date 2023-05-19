@@ -8,13 +8,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
     - name: Install dependencies
-      run:  sudo apt install -y libsdl1.2-dev make g++ libjack-dev
+      run:  sudo dpkg --add-architecture i386 && sudo apt update && sudo apt install -y gcc-multilib g++-multilib libsdl1.2-dev:i386 libasound2-plugins:i386 libjack-dev:i386
 
     - name: Run build
       run: cd projects && make PLATFORM=DEB 
