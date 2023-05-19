@@ -2,9 +2,9 @@ name: Build smoketest
 
 on:
   push:
-    branches: [ "master", "o-release-candidate" ]
+    branches: [ "loop_p2p" ] #"master", "o-release-candidate" ]
   pull_request:
-    branches: [ "master", "o-release-candidate" ]
+    branches: [ "loop_p2p" ] #"master", "o-release-candidate" ]
 
 jobs:
   build:
