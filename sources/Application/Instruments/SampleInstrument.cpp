@@ -665,10 +665,14 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
 							}
 							break ;
 						case SILM_LOOP_PINGPONG:
-							if (rp->position_ >= rp->rendLoopEnd_ || input <= loopPosition) {
-								rpReverse = !rpReverse;
-								fpSpeed = -fpSpeed;
-								rp->couldClick_=SHOULD_KILL_CLICKS ;
+							try {
+								if (rp->position_ >= rp->rendLoopEnd_ || input <= loopPosition) {
+									rpReverse = !rpReverse;
+									fpSpeed = -fpSpeed;
+									rp->couldClick_=SHOULD_KILL_CLICKS ;
+								}
+							catch ( std::exception &error ) {
+								Trace::Error("Error in loop: %s", error.what()) ;
 							}
 
 							break;
@@ -709,12 +713,17 @@ bool SampleInstrument::Render(int channel,fixed *buffer,int size,bool updateTick
 							}
 							break ;
 						case SILM_LOOP_PINGPONG:
-							if (rp->position_ <= rp->rendLoopStart_ || input <= loopPosition) {
-								rpReverse = !rpReverse;
-								fpSpeed = -fpSpeed;
-								input=loopPosition ; // OK forward loop, regular backwards loop
-                                                     // without it loop jumps between start and end infinitely
-								rp->couldClick_=SHOULD_KILL_CLICKS;
+							try {
+								if (rp->position_ <= rp->rendLoopStart_ || input <= loopPosition) {
+									rpReverse = !rpReverse;
+									fpSpeed = -fpSpeed;
+									input=loopPosition ; // OK forward loop, regular backwards loop
+														// without it loop jumps between start and end infinitely
+									rp->couldClick_=SHOULD_KILL_CLICKS;
+								}
+							}
+							catch ( std::exception &error ) {
+								Trace::Error("Error in loop: %s", error.what()) ;
 							}
 							break;
 /*						case SILM_OSCFINE:
