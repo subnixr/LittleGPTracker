@@ -1,4 +1,4 @@
--include $(PWD)/base_rules
+-include $(PWD)/rules/base
 
 #STRIP = arm-linux-strip
 STRIP = ls

@@ -2218,7 +2218,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit221]
-FileName=base_rules
+FileName=rules\base
 CompileCpp=1
 Folder=_makefile
 Compile=0
@@ -2228,7 +2228,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit222]
-FileName=gp2x_rules
+FileName=rules\gp2x
 CompileCpp=1
 Folder=_makefile
 Compile=0
@@ -2238,7 +2238,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit223]
-FileName=gp32_rules
+FileName=rules\gp32
 CompileCpp=1
 Folder=_makefile
 Compile=0
@@ -2298,7 +2298,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit229]
-FileName=osx_rules
+FileName=rules\osx
 CompileCpp=1
 Folder=_makefile
 Compile=0

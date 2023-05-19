@@ -1,5 +1,5 @@
 
-include $(PWD)/osx_rules
+include $(PWD)/rules/osx
 
 CFLAGS	:= -O3 -Wall -I$(PWD) -I/Library/Frameworks/SDL.framework/Headers 
 

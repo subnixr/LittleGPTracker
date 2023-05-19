@@ -6,7 +6,7 @@ TOOLPATH=$(DEVKIT)/usr/bin
 PREFIX		:=	arm-linux-
 SDL_BASE = $(DEVKIT)/arm-buildroot-linux-musleabi/sysroot/usr/bin/
 
-include $(PWD)/bittboy_rules
+include $(PWD)/rules/bittboy
 
 CFLAGS	:=	`$(SDL_BASE)sdl-config --cflags` -O3 -D_NDEBUG -D_NO_JACK_ -Wall -DPLATFORM_DINGOO -I$(PWD)/../sources -D__LINUX_ALSA__  -DCPP_MEMORY -DRS97
 

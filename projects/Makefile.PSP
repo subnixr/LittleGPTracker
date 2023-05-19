@@ -6,7 +6,7 @@ PSP_EBOOT_ICON = $(PWD)/psp_icon.png
 PSP_EBOOT_ICON1 = $(PWD)/lgpt_icon.bmp
 PSP_EBOOT_PIC1 = $(PWD)/psp_bg.png
 
-include $(PWD)/psp_rules
+include $(PWD)/rules/psp
 
 PSPSDK=$(shell $(PSPDEV)/bin/psp-config --pspsdk-path)
 PSPBIN = $(PSPSDK)/../bin

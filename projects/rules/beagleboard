@@ -1,7 +1,6 @@
--include $(PWD)/base_rules
-LDFLAGS := -m32
+-include $(PWD)/rules/base
 
 #---------------------------------------------------------------------------------
-%.deb-exe: $(OFILES)
+%.beagle-exe: $(OFILES)
 	$(CXX) $(LDFLAGS) $@ $(OFILES) $(LIBS)
 
