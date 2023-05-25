@@ -1,0 +1,16 @@
+<!--
+    MAPPING FOR KEYBOARDS
+    belongs in location of binary
+    rename to "mapping.xml" to use this
+-->
+<MAPPINGS>
+
+<!--
+    EXAMPLE
+    maps the button "q" to light shoulder
+    maps the button "w" to right shoulder
+-->
+        <MAP src="key:0:q" dst="/event/lshoulder" />
+        <MAP src="key:0:w" dst="/event/rshoulder" />
+
+</MAPPINGS>

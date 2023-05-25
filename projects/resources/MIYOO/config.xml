@@ -1,0 +1,17 @@
+<!--CONFIG FOR MIYOO MINI-->
+<CONFIG>
+    <!-- Uncomment to render
+    <RENDER value="FILE" />
+    -->
+    <!-- Debugging and button conf
+    <DUMPEVENT value="YES"/>
+    -->
+    <!-- use if you want to put your tracks somewhere special
+            Must be absolute path
+    -->
+    <ROOTFOLDER value="/media/sdcard/lgpt_files"/>
+    <!-- Where you want your samplelib. Default is SD card
+            Must be absolute path
+    -->
+    <SAMPLELIB value="/media/sdcard/lgpt_files/samplelib"/>
+</CONFIG>
