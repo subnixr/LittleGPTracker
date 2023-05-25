@@ -572,7 +572,9 @@ endif
 deploy:
 	make PLATFORM=PSP
 	make PLATFORM=DEB
-	./resources/packaging/docker_steam.sh 
-#	./resources/packaging/build_and_copy_from_pi.sh
-#	./resources/packaging/build_and_copy_from_chip.sh
-	./resources/packaging/lgpt_package.sh	        
+	make PLATFORM=RS97
+	make PLATFORM=BITTBOY
+	./resources/packaging/docker_steam.sh
+	./resources/packaging/build_and_copy_from_pi.sh
+	./resources/packaging/build_and_copy_from_chip.sh
+	./resources/packaging/lgpt_package.sh

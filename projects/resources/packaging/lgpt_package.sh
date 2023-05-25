@@ -1,20 +1,23 @@
-cd ~/Documents/GitRepos/LittleGPTracker/
-BUILD="$(grep -oP 'BUILD_COUNT [^"]*"\K[^"]*' sources/Application/Model/Project.h)"
+#!/bin/bash
+BUILD="$(grep -oP 'BUILD_COUNT [^"]*"\K[^"]*' ../sources/Application/Model/Project.h)"
 VERSION=1.3o_$BUILD
 PACKAGE=LGPT-$VERSION.zip
 
-rm ./projects/buildPSP/lgpt.elf
-mv bin/lgpt.exe bin/lgpt-win32.exe
-CONTENTS="$(find -name lgpt.*exe -o -name *.elf -o -name *.dge) "
-echo Moving $CONTENTS to bin:
-mv $CONTENTS bin/
-CONTENTS="bin/*"
-echo Adding bin to $PACKAGE:
-zip -9 $PACKAGE $CONTENTS
-CONTENTS="$(find -name EBOOT.PBP) "
-zip -9 $PACKAGE -j $CONTENTS
-CONTENTS="$(find -name config.xml -o -name mapping*.xml -o -name README.txt)"
-zip -9 $PACKAGE $CONTENTS
-CONTENTS="lgpt_ALPHA/*"
-zip -r -9 $PACKAGE $CONTENTS
-mv bin/lgpt-win32.exe bin/lgpt.exe
+collect_resources() { #1PLATFORM #2lgpt.*-exe
+  PACKAGE=LGPT-$1-$VERSION.zip
+  echo Packaging $PACKAGE
+  CONTENTS="./resources/$1/*"
+  CONTENTS+=" $(find -iname $2 -o -name README.txt)"
+  zip -9 $PACKAGE -j $CONTENTS # Add intermediate step creating bin folder
+  cd ./resources/packaging 
+  CONTENTS="$(find -name lgpt_ALPHA -o -name samplelib)"
+  zip -9 ../../$PACKAGE $CONTENTS && cd -
+}
+
+rm -f buildPSP/lgpt.elf
+collect_resources PSP EBOOT.PBP
+collect_resources DEB lgpt.deb-exe
+collect_resources STEAM lgpt.steam-exe
+collect_resources RS97 lgpt.dge
+collect_resources BITTBOY lgpt.elf
+collect_resources W32 lgpt.exe
