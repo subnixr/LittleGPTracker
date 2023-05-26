@@ -5,12 +5,18 @@ PACKAGE=LGPT-$VERSION.zip
 
 collect_resources() { #1PLATFORM #2lgpt.*-exe
   PACKAGE=LGPT-$1-$VERSION.zip
-  echo Packaging $PACKAGE
+  echo "-=-=Packaging $PACKAGE=-=-"
   CONTENTS="./resources/$1/*"
-  CONTENTS+=" $(find -iname $2 -o -name README.txt)"
-  zip -9 $PACKAGE -j $CONTENTS # Add intermediate step creating bin folder
+  CONTENTS+=" $(find -iname $2)"
+  if [ "$1" == "PSP" ]; then # PSP files go in the root folder
+    zip -9 $PACKAGE -j $CONTENTS
+  else # all the others go in the bin
+    mkdir bin && cp $CONTENTS bin
+    zip -9 $PACKAGE bin/* && rm -r bin/
+  fi
   cd ./resources/packaging 
-  CONTENTS="$(find -name lgpt_ALPHA -o -name samplelib)"
+  CONTENTS="$(find -name samplelib -o -name README.txt)"
+  CONTENTS+=" lgpt_ALPHA/* lgpt_ALPHA/samples/*"
   zip -9 ../../$PACKAGE $CONTENTS && cd -
 }
 
