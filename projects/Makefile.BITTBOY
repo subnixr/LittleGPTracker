@@ -8,9 +8,12 @@ SDL_BASE = $(DEVKIT)/arm-buildroot-linux-musleabi/sysroot/usr/bin/
 
 include $(PWD)/bittboy_rules
 
-CFLAGS	:=	`$(SDL_BASE)sdl-config --cflags` -O3 -D_NDEBUG -D_NO_JACK_ -Wall -DPLATFORM_DINGOO -I$(PWD)/../sources -D__LINUX_ALSA__  -DCPP_MEMORY -DRS97
+DEFINES = -DHAVE_STDINT_H -DVERSION_BITTBOY
+INCLUDES = -Iinclude `$(SDL_BASE)sdl-config --cflags --libs`
+OPT_FLAGS  = -Ofast -fdata-sections -fdata-sections -fno-common -fno-PIC -flto
 
-CXXFLAGS:=	$(CFLAGS) -std=gnu++03
+CFLAGS	:=	$(DEFINES) $(INCLUDES) $(OPT_FLAGS)  -O3 -Wall -DPLATFORM_DINGOO -I$(PWD)/../sources -DCPP_MEMORY -DRS97
+CXXFLAGS:=	$(CFLAGS) -std=gnu++11
 
 EXTENSION:= elf
 

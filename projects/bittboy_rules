@@ -1,7 +1,6 @@
 -include $(PWD)/base_rules
 
-#STRIP = arm-linux-strip
-STRIP = ls
+STRIP = $(DEVKIT)/arm-buildroot-linux-musleabi/bin/strip
 
 #---------------------------------------------------------------------------------
 %.elf: $(OFILES)
