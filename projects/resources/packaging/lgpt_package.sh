@@ -19,12 +19,12 @@ collect_resources() { #1PLATFORM #2lgpt.*-exe
   if [ "$1" == "PSP" ]; then # PSP files go in the root folder
     zip -9 $PACKAGE -j $CONTENTS
   else # all the others go in the bin
-    mkdir bin && cp $CONTENTS bin
+    mkdir bin ; cp $CONTENTS bin
     zip -9 $PACKAGE bin/* && rm -r bin/
   fi
   cd ./resources/packaging 
-  CONTENTS="$(find -name samplelib -o -name README.txt)"
-  CONTENTS+=" lgpt_ALPHA/* lgpt_ALPHA/samples/*"
+  CONTENTS="$(find -name README.txt)"
+  CONTENTS+=" samplelib/*wav lgpt_ALPHA/* lgpt_ALPHA/samples/*"
   zip -9 ../../$PACKAGE $CONTENTS && cd -
 }
 
