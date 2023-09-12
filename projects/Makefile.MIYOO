@@ -16,7 +16,7 @@ TARGET = lgpt.elf
 TOOLPATH=$(DEVKIT)/usr/bin
 PREFIX		:=	arm-linux-gnueabihf-
 
-include $(PWD)/miyoo_rules
+include $(PWD)/rules_miyoo
 
 CFLAGS	:=	$(DEFINES) $(INCLUDES) $(OPT_FLAGS) -Wall  
 CXXFLAGS:=	$(CFLAGS) -std=gnu++03 
