@@ -1,6 +1,0 @@
--include $(PWD)/rules_base
-STRIP = arm-linux-strip
-#---------------------------------------------------------------------------------
-%.gpe: $(OFILES)
-	$(CXX) -static $(LDFLAGS) -o $@ $(OFILES) $(LIBS)
-	@$(STRIP) $@

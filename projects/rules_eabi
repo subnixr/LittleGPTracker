@@ -1,6 +1,0 @@
--include $(PWD)/rules_base
-STRIP = ls
-#---------------------------------------------------------------------------------
-%.elf: $(OFILES)
-	$(CXX) $(LDFLAGS) -o $@ $(OFILES) $(LIBS)
-	@$(STRIP) $@
