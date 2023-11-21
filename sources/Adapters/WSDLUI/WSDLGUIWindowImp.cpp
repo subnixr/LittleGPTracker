@@ -46,7 +46,7 @@ WSDLGUIWindowImp::~WSDLGUIWindowImp() {
 #define FONT_WIDTH 1024
 #define FONT_COUNT 127
 static const unsigned char font[]= {
-	#include "Resources/font.c"
+	#include "Resources/font.h"
 };
 
 static SDL_Surface *fonts[FONT_COUNT] ;

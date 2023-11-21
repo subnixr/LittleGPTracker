@@ -34,7 +34,7 @@ void NDSGUIWindowImp::Clear(GUIColor &c) {
 #define FONT_COUNT 127
 
 static const unsigned char font[]= {
-	#include "Resources/font.c"
+	#include "Resources/font.h"
 };
 
 void NDSGUIWindowImp::DrawString(char *string,GUIPoint &pos,GUITextProperties& p) {
